@@ -6,11 +6,15 @@ const johnSay = say(john);
 const aryaSay = say(arya);
 const sensaSay = say(sensa);
 
-
-sensapromise = new Promise((resolve, reject) => {
-    setImmediate(() => {
-        sensaSay('for the north');
-        resolve();
-    });
+sensaSay('For the North').then(val => {
+    console.log(val);
+    aryaSay('The king in the North').then(val => console.log(val));
+  
+    const interval = setInterval(() => {
+      console.log(val);
+      aryaSay('The king in the North').then(val => console.log(val));
+    }, 1000);
+    johnSay('Winter is coming').then(val => console.log(val));
+    setTimeout(() => clearInterval(interval), 10000);
   });
-/* TO DO */
+  
